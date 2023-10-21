@@ -1,0 +1,4 @@
+0:0:0:0:0:0:0:1 - - [13/Oct/2023:00:24:59 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8080-exec-1 17
+0:0:0:0:0:0:0:1 - - [13/Oct/2023:00:25:08 +0800] "POST /transferServlet HTTP/1.1" 200 59 http-bio-8080-exec-3 121
+0:0:0:0:0:0:0:1 - - [13/Oct/2023:00:25:54 +0800] "POST /transferServlet HTTP/1.1" 200 31 http-bio-8080-exec-1 308
+0:0:0:0:0:0:0:1 - - [13/Oct/2023:02:23:36 +0800] "POST /transferServlet HTTP/1.1" 200 31 http-bio-8080-exec-1 330

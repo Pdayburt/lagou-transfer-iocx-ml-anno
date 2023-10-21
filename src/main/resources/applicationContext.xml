@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd
+">
+
+    <context:component-scan base-package="com.lagou.edu"></context:component-scan>
+    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+
+<!--    <bean id="accountDao" class="com.lagou.edu.dao.impl.JdbcAccountDaoImpl"-->
+<!--    init-method="init" destroy-method="destroy">-->
+<!--        <property name="connectionUtils" ref="connectionUtils"></property>-->
+<!--    </bean>-->
+
+<!--    <bean id="transferService" class="com.lagou.edu.service.impl.TransferServiceImpl" >-->
+<!--&lt;!&ndash;        set + name 锁定传值的set方法，通过反射技术即可调用传值&ndash;&gt;-->
+<!--        <property name="AccountDao" ref="accountDao"></property>-->
+<!--    </bean>-->
+
+<!--    <bean id="connectionUtils" class="com.lagou.edu.utils.ConnectionUtils">-->
+<!--        <property name="dataSource" ref="dataSource"></property>-->
+<!--    </bean>-->
+
+<!--    <bean id="connectionUtils" class="com.lagou.edu.factory.CreateBeanFactory"-->
+<!--          factory-method="getConnectionUtils"></bean>-->
+<!--    <bean id="createBeanFactory"  class="com.lagou.edu.factory.CreateBeanFactory"></bean>-->
+<!--    <bean id="connectionUtils" factory-bean="createBeanFactory" factory-method="getInstance"></bean>-->
+
+
+<!--    <bean id="transactionManager" class="com.lagou.edu.utils.TransactionManager">-->
+<!--        <property name="ConnectionUtils" ref="connectionUtils"></property>-->
+<!--    </bean>-->
+
+<!--    <bean id="proxyFactory" class="com.lagou.edu.factory.ProxyFactory">-->
+<!--        <property name="TransactionManager" ref="transactionManager"></property>-->
+<!--    </bean>-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+    </bean>
+
+    <bean id="companyBean" class="com.lagou.edu.factory.CompanyFactoryBean">
+        <property name="companyInfo" value="拉钩,中关村,500"></property>
+    </bean>
+<!--    <bean id="logUtils" class="com.lagou.edu.utils.LogUtils"></bean>-->
+
+<!--    <aop:config>-->
+<!--        <aop:aspect id="logAspect" ref="logUtils" >-->
+<!--&lt;!&ndash;            切入点锁定感兴趣的方法，使用aspect语法表达式&ndash;&gt;-->
+<!--            <aop:pointcut id="pt1" expression="execution( * com.lagou.edu.service.impl.TransferServiceImpl.*(..))"/>-->
+<!--&lt;!&ndash;            方位点信息 pointcut-ref关联切入点&ndash;&gt;-->
+<!--            <aop:before method="beforeMethod" pointcut-ref="pt1"></aop:before>-->
+<!--            <aop:after method="afterMethod" pointcut-ref="pt1"></aop:after>-->
+<!--            <aop:after-returning method="methodSuccess" pointcut-ref="pt1" returning="retVal"></aop:after-returning>-->
+<!--            <aop:after-throwing method="methodException" pointcut-ref="pt1"></aop:after-throwing>-->
+<!--            <aop:around method="aroundMethod" pointcut-ref="pt1"></aop:around>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+<!--    proxy-target-class true 强制使用cglib-->
+
+<!--    <aop:aspectj-autoproxy ></aop:aspectj-autoproxy>-->
+
+
+</beans>
